@@ -2,7 +2,7 @@ name: autotest and deploy
 
 on:
   push:
-    branches:[ci]
+    branches:[master]
 
 
 jobs:
