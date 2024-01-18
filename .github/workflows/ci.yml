@@ -2,12 +2,13 @@ name: autotest and deploy
 
 on:
   push:
-    branches:[master]
+    branches:
+      - master
 
 
 jobs:
   tests:
-    runs-on: ubuntu:22.04
+    runs-on: ubuntu-22.04
     env:
       SECRET: ${{ secrets.DJANGO_SECRET }}
       DEBUG: ${{ secrets.DEBUG }}
