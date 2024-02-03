@@ -6,7 +6,6 @@ class TestSomething(TestCase):
     def test_ok(self):
         assert True
 
-
     def test_sample_view(self):
         url = "/api/v1/test/"
         client = APIClient()
