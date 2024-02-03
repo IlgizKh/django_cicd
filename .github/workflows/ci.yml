@@ -1,12 +1,12 @@
-name: autotest and deploy
+ name: autotest and deploy
 
-on:
+ on:
   push:
     branches:
       - master
 
 
-jobs:
+ jobs:
   tests:
     runs-on: ubuntu-22.04
     env:
@@ -20,7 +20,7 @@ jobs:
       DB_HOST: ${{ secrets.DB_HOST }}
       DB_PORT: ${{ secrets.DB_PORT }}
     services:
-      postgres_db:
+      postgres_main:
         image: postgres:12
         env:
           POSTGRES_DB: ${{ env.DB_NAME }}
@@ -35,12 +35,12 @@ jobs:
           --health-retries 5
     steps:
       - name: Проверка наличия изменений в репозитории
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Установка python и создание окружения
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: "3.11"
       - name: Установка зависимостей
         run: pip install -r requirements.txt
 
